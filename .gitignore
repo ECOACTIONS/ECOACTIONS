@@ -16,3 +16,5 @@ backend/database/*.db
 backend/database/*.sqlite
 Design\nRapport_Technique_EcoImpact_AI_v2.pdf
 Design/\nRapport_Technique_EcoImpact_AI_v2.pdf
+Design/
+Rapport_Technique_EcoImpact_AI_v2.pdf
