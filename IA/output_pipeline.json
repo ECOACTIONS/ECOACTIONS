@@ -1,0 +1,115 @@
+{
+  "couche1": {
+    "metadata": {
+      "user_id": "usr_21e1fa38",
+      "timestamp": "2026-06-16T03:19:51.928989+00:00"
+    },
+    "initial_score": {
+      "total_kgCO2e": 291.54,
+      "transport_kgCO2e": 107.87,
+      "energie_kgCO2e": 31.25,
+      "alimentation_kgCO2e": 152.42,
+      "detail": {
+        "transport": {
+          "voiture": 66.08,
+          "bus": 3.46,
+          "velo": 0.0,
+          "train": 0.0,
+          "vols_court": 38.33,
+          "vols_long": 0.0
+        },
+        "energie": {
+          "clim": 9.5,
+          "electricite": 10.4,
+          "gaz": 11.35
+        },
+        "alimentation": {
+          "viande_rouge": 117.78,
+          "viande_blanche": 19.48,
+          "poisson": 0.0,
+          "vegetarien": 15.16
+        }
+      }
+    },
+    "raw_input": {
+      "transport": {
+        "km_voiture_par_semaine": 70.0,
+        "km_bus_par_semaine": 10.0,
+        "km_velo_par_semaine": 0.0,
+        "km_train_par_semaine": 0.0,
+        "vols_court_courrier_par_an": 2,
+        "vols_long_courrier_par_an": 0
+      },
+      "energie": {
+        "heures_clim_par_jour": 4.0,
+        "kwh_electricite_par_mois": 200.0,
+        "kwh_gaz_par_mois": 50.0
+      },
+      "alimentation": {
+        "repas_viande_rouge_par_semaine": 4,
+        "repas_viande_blanche_par_semaine": 3,
+        "repas_poisson_par_semaine": 0,
+        "repas_vegetarien_par_semaine": 7
+      }
+    }
+  },
+  "couche2": {
+    "metadata": {
+      "user_id": "usr_21e1fa38",
+      "timestamp": "2026-06-16T03:19:51.928989+00:00"
+    },
+    "metrics": {
+      "initial_carbon_score_kgCO2e": 291.54,
+      "optimized_carbon_score_kgCO2e": 195.33,
+      "absolute_reduction_kgCO2e": 96.21,
+      "relative_reduction_percent": 33.0
+    },
+    "recom_vectors": [
+      {
+        "dimension": "alimentation",
+        "action": "Substitution Viande Rouge → Repas Végétarien",
+        "delta_input": "8.7 repas/mois",
+        "impact_reduction_kgCO2e": 54.56,
+        "description": "Remplacer la moitié des repas de viande rouge par des repas végétariens"
+      },
+      {
+        "dimension": "transport",
+        "action": "Substitution Véhicule Individuel → Vélo/Marche",
+        "delta_input": "90.9 km/mois",
+        "impact_reduction_kgCO2e": 19.82,
+        "description": "Remplacer les courts trajets voiture par le vélo ou la marche"
+      },
+      {
+        "dimension": "energie",
+        "action": "Modération utilisation climatisation",
+        "delta_input": "4.0 heures/jour",
+        "impact_reduction_kgCO2e": 9.5,
+        "description": "Réduire le nombre d'heures de climatisation quotidienne"
+      },
+      {
+        "dimension": "transport",
+        "action": "Substitution Véhicule Individuel → Bus",
+        "delta_input": "61.1 km/mois",
+        "impact_reduction_kgCO2e": 8.43,
+        "description": "Remplacer les trajets voiture par le bus urbain"
+      },
+      {
+        "dimension": "alimentation",
+        "action": "Substitution Viande Blanche → Repas Végétarien",
+        "delta_input": "3.9 repas/mois",
+        "impact_reduction_kgCO2e": 3.9,
+        "description": "Remplacer 30% des repas de viande blanche par des repas végétariens"
+      }
+    ],
+    "solver_status": "Optimal"
+  },
+  "couche3_validation": {
+    "sections_structure_ok": false,
+    "key_figures_present": false,
+    "suspicious_numbers": [
+      "54",
+      "291"
+    ],
+    "hallucination_risk": false
+  }
+}
