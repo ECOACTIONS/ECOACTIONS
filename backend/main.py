@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.routes import auth, score, optimize, chat
+from backend.routes import score
 
 app = FastAPI(
     title="EcoImpact AI API",
@@ -11,9 +11,9 @@ app = FastAPI(
 async def root():
     return {"message": "Bienvenue sur l'API EcoImpact AI"}
 
-# Inclusion des routes (qui seront créées prochainement)
+# Inclusion des routes
+app.include_router(score.router, prefix="/score", tags=["Score"])
 # app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
-# app.include_router(score.router, prefix="/score", tags=["Score"])
 # app.include_router(optimize.router, prefix="/optimize", tags=["Optimization"])
 # app.include_router(chat.router, prefix="/chat", tags=["AI Chat"])
 
