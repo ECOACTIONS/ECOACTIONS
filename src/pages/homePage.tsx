@@ -22,6 +22,7 @@ export default function HomePage() {
             <a href="#solutions" className="hover:text-emerald-600 transition-colors">Solutions</a>
             <a href="#impact" className="hover:text-emerald-600 transition-colors">Notre Impact</a>
             <a href="#partenaires" className="hover:text-emerald-600 transition-colors">Communauté</a>
+           
           </div>
           
           {/* Actions */}
@@ -32,6 +33,7 @@ export default function HomePage() {
             <Link to="/register" className="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-medium px-4 py-2.5 rounded-xl transition-all shadow-sm active:scale-[0.98]">
               S'inscrire
             </Link>
+            
           </div>
         </div>
       </nav>
