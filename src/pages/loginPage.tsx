@@ -1,14 +1,20 @@
-import { useState, FormEvent } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, type FormEvent } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 export default function LoginPage() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
 
+  const from = (location.state as { from?: string } | null)?.from || '/'
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault() // Plus d'erreur TypeScript ici !
-    console.log({ email, password })
+    e.preventDefault()
+    localStorage.setItem('authUser', email)
+    localStorage.setItem('authToken', 'demo-token')
+    navigate(from, { replace: true })
   }
 
   return (
@@ -128,7 +134,7 @@ export default function LoginPage() {
         {/* Lien de redirection */}
         <p className="text-center text-xs text-slate-500 mt-6">
           Pas encore de compte ?{' '}
-          <Link to="/register" className="text-emerald-600 font-semibold hover:text-emerald-700 hover:underline transition-colors">
+          <Link to="/register" state={{ from }} className="text-emerald-600 font-semibold hover:text-emerald-700 hover:underline transition-colors">
             S'inscrire
           </Link>
         </p>

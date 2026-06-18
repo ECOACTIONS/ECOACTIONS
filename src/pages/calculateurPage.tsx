@@ -1,4 +1,5 @@
 import { useState, FormEvent } from 'react'
+import { useNavigate } from 'react-router-dom' // <-- Très important !
 
 interface FormData {
   transportType: string
@@ -10,6 +11,7 @@ interface FormData {
 }
 
 export default function CalculateurPage() {
+  const navigate = useNavigate()
   const [step, setStep] = useState<number>(1)
   const [darkMode, setDarkMode] = useState<boolean>(false)
   const [formData, setFormData] = useState<FormData>({
@@ -36,6 +38,7 @@ export default function CalculateurPage() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
     console.log('Payload:', formData)
+    navigate('/recommandations')
   }
 
   const progressPercentage = (step / 5) * 100
@@ -54,7 +57,7 @@ export default function CalculateurPage() {
             <div className="w-2 h-2 rounded-sm bg-white"></div>
           </div>
           <span className="text-xs font-semibold uppercase tracking-widest text-emerald-600 dark:text-emerald-500">
-            <a href="#homePage">EcoImpact AI</a>
+            EcoImpact AI / Index Central
           </span>
         </div>
         
@@ -67,7 +70,7 @@ export default function CalculateurPage() {
               : 'bg-white border-[#e2e8f0] text-[#64748b] hover:text-[#0f172a] hover:border-[#cbd5e1]'
           }`}
         >
-          {darkMode ? 'clair' : 'sombre'}
+          {darkMode ? 'LIGHT THEME' : 'DARK THEME'}
         </button>
       </header>
 
@@ -104,7 +107,7 @@ export default function CalculateurPage() {
               </div>
               <div className="grid grid-cols-1 gap-3">
                 {[
-                  { id: 'none', title: 'Transport en commun', desc: 'Usage exclusif des bus de ligne et taxis collectifs urbains.' },
+                  { id: 'none', title: 'Transit Collectif Uniquement', desc: 'Usage exclusif des bus de ligne et taxis collectifs urbains.' },
                   { id: 'moto', title: 'Deux-roues Motorisé Personnel', desc: 'Moto personnelle ou scooter de cylindrée standard.' },
                   { id: 'essence-small', title: 'Motorisation Essence Légère', desc: 'Véhicule citadin de faible litrage ou berline compacte.' },
                   { id: 'diesel-large', title: 'Châssis Lourd Diesel', desc: 'SUV, Pick-up double cabine ou véhicule utilitaire à forte charge.' },

@@ -1,22 +1,28 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 export default function RegisterPage() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const [nom, setNom] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirm, setConfirm] = useState('')
 
-  const handleSubmit = (e: any) => { // 👈 On dit à TS de ne pas vérifier le type
-  e.preventDefault()
-  
-  if (password !== confirm) {
-    alert("Les mots de passe ne correspondent pas.")
-    return
-  }
+  const from = (location.state as { from?: string } | null)?.from || '/'
 
-  console.log({ nom, email, password, confirm })
-}
+  const handleSubmit = (e: any) => {
+    e.preventDefault()
+
+    if (password !== confirm) {
+      alert("Les mots de passe ne correspondent pas.")
+      return
+    }
+
+    localStorage.setItem('authUser', email)
+    localStorage.setItem('authToken', 'demo-token')
+    navigate(from, { replace: true })
+  }
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 family-sans">
@@ -122,7 +128,7 @@ export default function RegisterPage() {
         {/* Lien de redirection */}
         <p className="text-center text-xs text-slate-500 mt-6">
           Déjà inscrit ?{' '}
-          <Link to="/login" className="text-emerald-600 font-semibold hover:text-emerald-700 hover:underline transition-colors">
+          <Link to="/login" state={{ from }} className="text-emerald-600 font-semibold hover:text-emerald-700 hover:underline transition-colors">
             Se connecter
           </Link>
         </p>

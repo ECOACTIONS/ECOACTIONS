@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export default function HomePage() {
+  const navigate = useNavigate()
   return (
     <div className="min-h-screen bg-slate-50 font-sans antialiased text-slate-800 flex flex-col">
       
@@ -65,6 +67,7 @@ export default function HomePage() {
           >
             Calculer mon empreinte
           </Link>
+
           <a 
             href="#impact" 
             className="w-full sm:w-auto border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-medium px-8 py-3.5 rounded-xl transition-all text-center text-sm"
@@ -138,6 +141,41 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+
+      
+<section className="max-w-4xl mx-auto px-4 my-16">
+  <div className="p-6 md:p-8 rounded-2xl border border-dashed border-red-500/30 bg-gradient-to-b from-[#0f1319] to-[#090d16] relative overflow-hidden">
+    
+    {/* Effet visuel discret d'alerte */}
+    <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 blur-[60px] pointer-events-none" />
+
+    <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <div className="space-y-2">
+        <div className="flex items-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+          <span className="text-[10px] font-mono font-bold tracking-widest text-red-400 uppercase">
+            Action Citoyenne Urgente
+          </span>
+        </div>
+        <h2 className="text-xl font-black tracking-tight text-white">
+          Signaler un dépôt d'ordures sauvage
+        </h2>
+        <p className="text-xs text-[#64748b] max-w-xl leading-relaxed">
+          Une décharge à ciel ouvert bloque votre quartier au Cameroun ? Photographiez-la et localisez-la. Notre IA transmettra automatiquement l'alerte à la mairie ou aux entreprises de recyclage partenaires.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => navigate('/signaler')}
+        className="w-full md:w-auto text-xs font-bold uppercase tracking-widest bg-red-600 hover:bg-red-500 text-white px-6 py-4 rounded-xl shadow-lg shadow-red-600/10 active:scale-[0.98] transition-all whitespace-nowrap"
+      >
+        Lancer une alerte
+      </button>
+    </div>
+  </div>
+</section>
 
       {/* 5. FOOTER PROFESSIONNEL ET INSTITUTIONNEL */}
       <footer className="bg-white border-t border-slate-100 mt-auto">
